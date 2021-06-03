@@ -1,4 +1,4 @@
-class Tree{
+class Tree1{
  constructor(x,y,width,height){
  var options = {
 isStatic: true
