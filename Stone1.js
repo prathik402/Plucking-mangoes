@@ -1,7 +1,10 @@
 class Stone1{
     constructor(x,y,width,height){
     var options = {
-   isStatic: true
+   isStatic: false,
+   density: 1,
+   resistution: 0,
+   friction: 1
    
    }
    this.body = Bodies.rectangle(x,y,width,height,options);
@@ -17,7 +20,7 @@ display(){
     rectMode(CENTER);
     fill("brown");
 
-    rect(pos.x, pos.y, this.width, this.height);
+    image(this.image,pos.x, pos.y, this.width, this.height);
 }
 
 }

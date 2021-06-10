@@ -1,7 +1,9 @@
-class Player{
+class Mango{
     constructor(x,y,width,height){
     var options = {
-   isStatic: true
+   isStatic: true,
+   restitution: 0,
+   friction: 1
     }
 
    
@@ -12,7 +14,7 @@ class Player{
    this.y = y;
    this.width = width;
    this.height = height;
-   this.image = loadImage("boy.png");
+   this.image = loadImage("mango.png");
    World.add(world, this.body);
    }
      
