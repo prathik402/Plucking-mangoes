@@ -30,10 +30,10 @@ function setup() {
     mango4 = new Mango(620,280,60,60);
     tree = new Tree1(600,450,400,420);
     ground = new Ground(600,650,1300,10);
-    stone = new Stone1(50,550,60,60);
+    stone = new Stone1(50,400,60,60);
     boy = new Player(300,600,160,180);
-    chain = new Chain(stone.body,boy.body,30,30)
-    slingshot = new SlingShot(stone.body,{x:220, y:550});
+   
+    slingshot = new SlingShot(stone.body,{x:200, y:520});
     
 
 	Engine.run(engine);
@@ -44,7 +44,7 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
-  chain.display();
+ 
   tree.display();
   mango1.display();
   mango2.display();
@@ -54,6 +54,10 @@ function draw() {
   boy.display();
   stone.display();
   slingshot.display();
+  detectCollision(stone,mango1);
+  detectCollision(stone,mango2);
+  detectCollision(stone,mango3);
+  detectCollision(stone,mango4);
  
   drawSprites();
  
@@ -70,15 +74,16 @@ function mouseReleased(){
 
 function keyPressed(){
   if(keyCode === 32){
-    Matter.Body.setPosition(stone.body,{x:50,y:550})
+    Matter.Body.setPosition(stone.body,{x:250,y:550})
     slingshot.attach(stone.body); 
+   
   }
 }
 function detectCollision(Lstone,Lmango){
   mangoBodyPosition = Lmango.body.position
   stoneBodyPosition = Lstone.body.position
   var distance = dist(stoneBodyPosition.x,stoneBodyPosition.y,mangoBodyPosition.x,mangoBodyPosition.y)
-  if(distance<-Lmango.r+Lstone.r)
+  if(distance<=Lmango.r+Lstone.r)
    {
      Matter.body.setStatic(Lmango.body,false);
    }
